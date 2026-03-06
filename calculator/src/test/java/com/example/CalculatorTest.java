@@ -1,7 +1,8 @@
 package com.example;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CalculatorTest {
     @Test
@@ -10,7 +11,7 @@ public class CalculatorTest {
         int x =  5;
         int y = 3;
         int result = calculator.add(x, y);
-        Assertions.assertEquals(8,result, "Result should be 8");
+        assertEquals(8,result, "Result should be 8");
     }
     @Test
     public void testSubtract(){
@@ -18,7 +19,7 @@ public class CalculatorTest {
         int x =  5;
         int y = 3;
         int result = calculator.sub(x, y);
-        Assertions.assertEquals(2,result, "Result should be 2");
+        assertEquals(2,result, "Result should be 2");
     }
     @Test
     public void testMultiply(){
@@ -26,14 +27,29 @@ public class CalculatorTest {
         int x =  5;
         int y = 3;
         int result = calculator.mul(x, y);
-        Assertions.assertEquals(15,result, "Result should be 15");
+        assertEquals(15,result, "Result should be 15");
     }
     @Test
     public void testDivide(){
         Calculator calculator = new Calculator();
         int x =  15;
         int y = 3;
+        int z = 0;
         int result = calculator.div(x, y);
-        Assertions.assertEquals(5,result, "Result should be 5");
+        assertEquals(5,result, "Result should be 5");
+        assertThrows(IllegalArgumentException.class, () -> calculator.div(x, z), "Division by 0");
+    }
+
+    @Test
+    public void testPositive(){
+        Calculator calculator = new Calculator();
+        int x =  5;
+        int y = 0;
+        int z = -10;
+
+        assertTrue(calculator.isPositive(x),"Result should be true");
+        assertTrue(calculator.isPositive(y),"Result should be true");
+        assertFalse(calculator.isPositive(z),"Result should be false");
+
     }
 }
