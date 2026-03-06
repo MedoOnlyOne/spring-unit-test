@@ -1,10 +1,36 @@
 package com.example;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/*
+* @TestInstance(TestInstance.Lifecycle.PER_CLASS) Creates only one instant of the test class for all methods (beforeAll and afterAll can be static or not)
+* @TestInstance(TestInstance.Lifecycle.PER_METHOD) [DEFAULT] Creates an instant of the test class for each test method (beforeAll and afterAll must be static)
+*
+* */
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class CalculatorTest {
+    public CalculatorTest() {
+        System.out.println("CalculatorTest Constructor");
+    }
+
+    @BeforeAll
+    public void beforeAll() {
+        System.out.println("Before All");
+    }
+    @AfterAll
+    public void afterAll() {
+        System.out.println("After All");
+    }
+    @BeforeEach
+    public void beforeEach() {
+        System.out.println("Before Each");
+    }
+    @AfterEach
+    public void afterEach() {
+        System.out.println("After Each");
+    }
     @Test
     public void testAdd(){
         Calculator calculator = new Calculator();
