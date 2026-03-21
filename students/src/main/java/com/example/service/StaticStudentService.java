@@ -1,8 +1,10 @@
-package com.example;
+package com.example.service;
+
+import com.example.model.Student;
 
 import java.time.Duration;
 
-public class StudentService {
+public class StaticStudentService {
     public Student findStudentById(int id) {
         if(id == 1)
             return new Student(1, "Mohamed");
